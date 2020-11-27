@@ -1,0 +1,89 @@
+from tkinter import *
+global Channel
+global Volume
+Channel =0
+Volume = 0
+def processOn():
+    global info_text
+    scvalue.set("TV is turned on")
+    info_text.config(text="")
+
+def VolumeInc():
+    global Volume, info_text
+    print("Volume is set to : ")
+    if Volume <7:
+        Volume = Volume+1
+    print(Volume)
+    info_text.config(text="Volume: " + str(Volume))
+
+def VolumeDec():
+    global Volume, info_text
+    print("Volume is set to : ")
+    if Volume >0:
+        Volume = Volume-1
+    print(Volume)
+    info_text.config(text="Volume: " + str(Volume))
+
+def ChannelInc():
+    global Channel, info_text
+    print("Current channel on TV is : ")
+    if Channel < 120:
+        Channel = Channel + 1
+    print(Channel)
+    info_text.config(text="Channel: " + str(Channel))
+
+def ChannelDec():
+    global Channel, info_text
+    print("Current channel on TV is : ")
+    if Channel > 1:
+        Channel = Channel- 1
+    print(Channel)
+    info_text.config(text="Channel: " + str(Channel))
+
+def processOff():
+    global info_text
+    scvalue.set("TV is turned off")
+    info_text.config(text="")
+
+font = ("Arial",18, "bold")
+root = Tk()
+scvalue = StringVar()
+scvalue.set("")
+screen = Entry(root,textvar = scvalue, font = "ARIAL", justify = CENTER)
+screen.pack(fill = X, ipadx = 10, pady = 20, padx = 20)
+heading = Label(root,text="Welcome to Python TV", font = font)
+info_text = Label(root, text="", font = ("Arial", 12, "bold"))
+info_text.pack()
+heading.pack(side = TOP)
+
+f = Frame(root, bg = "black")
+btOn = Button(f,text="ON", fg="red", padx = 5, pady = 5, command = processOn)
+btOn.pack(padx = 10, pady =10 )
+f.pack()
+
+f1= Frame(root, bg = "black")
+bt1 = Button(f1, text = "Volume +",fg="blue", padx = 5, pady = 5, command = VolumeInc)
+bt1.pack(padx = 5, pady = 5, side = LEFT)
+bt2 = Button(f1,text="Volume-",fg="blue", padx = 5, pady = 5, command = VolumeDec)
+bt2.pack(padx = 10, pady = 10, side = RIGHT)
+f1.pack()
+
+f2 = Frame(root, bg = "black")
+bt3 = Button(f2,text="Channel+",fg="green", padx = 5, pady = 5, command = ChannelInc)
+bt3.pack(padx = 10, pady = 10, side = LEFT)
+bt4 = Button(f2,text="Channel-",fg="green",padx = 5, pady = 5, command = ChannelDec)
+bt4.pack(padx = 10, pady = 10, side = RIGHT)
+f2.pack()
+
+f3 = Frame(root, bg = "black")
+btOff = Button(f3,text="OFF", fg="red", padx = 5, pady = 5, command = processOff)
+btOff.pack(padx = 10, pady = 10)
+f3.pack()
+
+btOn.pack()
+bt1.pack()
+bt2.pack()
+bt3.pack()
+bt4.pack()
+btOff.pack()
+root.mainloop()
