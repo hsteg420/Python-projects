@@ -1,0 +1,13 @@
+import turtle
+p = turtle.Turtle()
+turtle.bgcolor("black")
+c = ["red","blue","yellow","green","orange","gray","white","aqua"]
+name=turtle.textinput("enter name","what is your name?")
+s=int(turtle.numinput("no of sides","how many sides?(1-10)"))
+for x in range(100):
+    p.pencolor(c[x%s%10])
+    p.penup()
+    p.forward(x*4)
+    p.pendown()
+    p.write(name, font = ("Arial",int((x*2+4)/4), "bold"))
+    p.right(360/s - 2)
